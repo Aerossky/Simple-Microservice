@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  service-resep:
+    build:
+      context: ./service-resep
+    container_name: service-resep
+    ports:
+      - "3000:3000"
+    environment:
+      - DATABASE_URL=mysql://root@mysql:3306/db_resep
+      - PORT=3000
+    depends_on:
+      - db_resep
+    restart: always
+
+  db_resep:
+    image: mysql:8.0
+    container_name: mysql
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+      MYSQL_DATABASE: db_resep
+    ports:
+      - "3306:3306" 
+    volumes:
+      - mysql-data:/var/lib/mysql
+    restart: always   
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    environment:
+      PMA_HOST: mysql
+      PMA_USER: root
+      PMA_PASSWORD: ""
+      UPLOAD_LIMIT: 64M
+    ports:
+      - "8080:80"
+    depends_on:
+      - db_resep
+    restart: always
+
+volumes:
+  mysql-data:
