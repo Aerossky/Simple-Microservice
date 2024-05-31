@@ -13,9 +13,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Permintaan {
+model permintaan {
   id                  Int      @id @default(autoincrement())
   nama_makanan        String
-  // author              User    @relation(fields: [authorId], references: [id])
-  // authorId            Int
 }

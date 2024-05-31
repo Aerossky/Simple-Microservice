@@ -16,6 +16,4 @@ datasource db {
 model Komentar {
   id          Int      @id @default(autoincrement())
   komentar     String
-  // author    User     @relation(fields: [authorId], references: [id])
-  // authorId  Int
 }

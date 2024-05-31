@@ -8,8 +8,21 @@ services:
     ports:
       - "3000:3000"
     environment:
-      - DATABASE_URL=mysql://root@mysql:3306/db_resep
+      - DATABASE_URL=mysql://root@db_resep:3306/db_resep
       - PORT=3000
+    depends_on:
+      - db_resep
+    restart: always
+    
+  service-permintaan-resep:
+    build:
+      context: ./service-permintaan-resep
+    container_name: service-permintaan-resep
+    ports:
+      - "3001:3001"
+    environment:
+      - DATABASE_URL=mysql://root@db_resep:3306/db_resep
+      - PORT=3001
     depends_on:
       - db_resep
     restart: always
@@ -30,7 +43,7 @@ services:
     image: phpmyadmin/phpmyadmin
     container_name: phpmyadmin
     environment:
-      PMA_HOST: mysql
+      PMA_HOST: db_resep
       PMA_USER: root
       PMA_PASSWORD: ""
       UPLOAD_LIMIT: 64M

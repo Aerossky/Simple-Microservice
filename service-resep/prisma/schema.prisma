@@ -21,3 +21,8 @@ model resep {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
+
+model permintaan {
+  id                  Int      @id @default(autoincrement())
+  nama_makanan        String
+}

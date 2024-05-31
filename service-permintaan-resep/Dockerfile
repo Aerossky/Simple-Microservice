@@ -18,7 +18,7 @@ COPY . .
 RUN npx prisma generate
 
 # Expose port yang digunakan oleh aplikasi Express.js
-EXPOSE 3000
+EXPOSE 3001
 
 # Perintah yang akan dijalankan saat container dijalankan
-CMD npm run db:push && npm run start 
+CMD  npm run start
