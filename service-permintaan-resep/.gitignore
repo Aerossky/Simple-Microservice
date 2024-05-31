@@ -1,0 +1,5 @@
+# fungsi git ignore buat ngasih tau file apa yang tidak di masukan ke dalam repository
+# env tidak usah karena punya pribadi
+.env
+# node_modules tidak usah karena terlalu besar
+node_modules
