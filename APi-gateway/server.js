@@ -12,7 +12,11 @@ const resepRoutes = require('./routes/resepRoutes');
 // Middleware untuk parsing JSON
 app.use(express.json());
 
-
+app.get('/', (req, res) => {
+    res.send('API Gateway');
+});
+// Gunakan routes
+app.use('/resep', resepRoutes);
 
 app.listen(port, () => {
     console.log(`API Gateway running on port ${port}`);
