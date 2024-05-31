@@ -13,7 +13,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Komentar {
+model komentar {
   id          Int      @id @default(autoincrement())
   komentar     String
 }

@@ -13,7 +13,7 @@ services:
     depends_on:
       - db_resep
     restart: always
-    
+
   service-permintaan-resep:
     build:
       context: ./service-permintaan-resep
@@ -27,6 +27,19 @@ services:
       - db_resep
     restart: always
 
+  service-komentar:
+    build:
+      context: ./service-komentar
+    container_name: service-komentar
+    ports:
+      - "3002:3002"
+    environment:
+      - DATABASE_URL=mysql://root@db_resep:3306/db_resep
+      - PORT=3002
+    depends_on:
+      - db_resep
+    restart: always
+
   db_resep:
     image: mysql:8.0
     container_name: mysql
@@ -34,10 +47,10 @@ services:
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
       MYSQL_DATABASE: db_resep
     ports:
-      - "3306:3306" 
+      - "3306:3306"
     volumes:
       - mysql-data:/var/lib/mysql
-    restart: always   
+    restart: always
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin

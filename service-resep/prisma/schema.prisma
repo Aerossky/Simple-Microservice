@@ -26,3 +26,7 @@ model permintaan {
   id                  Int      @id @default(autoincrement())
   nama_makanan        String
 }
+model komentar {
+  id          Int      @id @default(autoincrement())
+  komentar     String
+}
