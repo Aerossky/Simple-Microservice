@@ -4,15 +4,11 @@ FROM node:16
 # Mengatur direktori kerja di dalam container
 WORKDIR /app
 
-# Menyalin package.json dan package-lock.json
-COPY package.json ./
-COPY package-lock.json ./
+# Menyalin seluruh kode proyek
+COPY . .
 
 # Menginstall dependencies
 RUN npm install
-
-# Menyalin seluruh kode proyek
-COPY . .
 
 # Menghasilkan Prisma Client
 RUN npx prisma generate
