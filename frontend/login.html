@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login Page</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div class="container-fluid h-100">
+      <div class="row">
+        <div class="col-md-8 d-flex align-items-center justify-content-center">
+          <div class="w-75">
+            <h2 class="text-start mb-4">
+              Selamat Datang di
+              <span class="font-weight-bolder tag-color">ResepKu</span>
+            </h2>
+            <form action="index.html" method="POST" class="w-75">
+              <div class="form-group">
+                <label for="username" class="font-weight-bold">Email</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="email"
+                  name="email"
+                />
+              </div>
+              <div class="form-group">
+                <label for="password" class="font-weight-bold">Password</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  id="password"
+                  name="password"
+                />
+              </div>
+              <div class="d-flex justify-content-center">
+                <button type="submit" class="btn buttonColor font-weight-bold">
+                  Masuk
+                </button>
+              </div>
+            </form>
+            <div>
+              <p class="text-center mt-3 w-75">
+                Belum punya akun?
+                <a href="register.html" class="font-weight-bold">Daftar</a>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 p-0">
+          <div class="full-height bg-right"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>

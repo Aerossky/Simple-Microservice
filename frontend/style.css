@@ -1,0 +1,46 @@
+html,
+body {
+  font-family: "Quicksand", sans-serif;
+  height: 100%;
+  margin: 0;
+  background-color: white;
+}
+a {
+  text-decoration: none;
+  color: black;
+}
+a:hover {
+  text-decoration: none;
+  color: #ff652d;
+}
+.buttonColor {
+  background-color: #ffa27f;
+  color: white;
+}
+.buttonColor:hover {
+  background-color: #ff652d;
+}
+.full-height {
+  height: 100vh;
+}
+.bg-right {
+  background-image: url("assets/img/foodbg.webp");
+  background-size: cover;
+  background-position: right;
+  /* transform: scaleX(-1); */
+}
+.tag-color {
+  color: #ff652d;
+}
+
+.home{
+    /* background-color: #97BE5A; */
+    background-size: cover;
+    background-position: right;
+    /* transform: scaleX(-1); */
+}
+
+.boxbg{
+    background-color: #FFE8C5;
+}
+

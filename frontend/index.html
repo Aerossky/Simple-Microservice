@@ -1,25 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Microservice Frontend</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-</head>
-<body>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="home">
+    <nav class="navbar navbar-expand-lg navbar-light boxbg" id="home">
+      <a class="navbar-brand" href="#"
+        ><span class="tag-color">ResepKu</span></a
+      >
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div
+        class="collapse navbar-collapse d-flex justify-content-center"
+        id="navbarNav"
+      >
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="#home">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#dresep">Daftar Resep</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#rresep">Request Resep</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+
     <div class="container mt-5">
-        <h1 class="text-center mb-4">Daftar Resep</h1>
-        <div class="row" id="resep-list"></div>
+      <h3 class="text-start mb-4 font-weight-bold" id="dresep">Daftar Resep</h3>
+      <div class="row" id="resep-list"></div>
     </div>
 
     <div class="container mt-5">
-        <h1 class="text-center mb-4">Daftar Permintaan Resep</h1>
-        <ul class="list-group mb-5" id="permintaan-resep-list"></ul>
+      <h3 class="text-start mb-4 font-weight-bold" id="rresep">Daftar Permintaan Resep</h3>
+      <ul class="list-group mb-5" id="permintaan-resep-list"></ul>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
