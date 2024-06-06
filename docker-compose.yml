@@ -37,7 +37,7 @@ services:
     links:
       - db_user
     ports:
-      - "7000:80"
+      - "7001:80"
     volumes:
       - './service-user/:/var/www/html'
     environment:

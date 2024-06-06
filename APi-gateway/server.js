@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const port = process.env.PORT || 4000;
 const cors = require('cors'); // Import cors
+const { createProxyMiddleware } = require('http-proxy-middleware');
 
 // Import routes
 const resepRoutes = require('./routes/resepRoutes');
@@ -20,6 +21,15 @@ app.get('/', (req, res) => {
 // Gunakan routes
 app.use('/reseps', resepRoutes);
 app.use('/permintaans', permintaanRoutes);
+
+// Proxy requests to /laravel to the Laravel API
+app.use('/laravel', createProxyMiddleware({
+    target: 'http://localhost:7001',
+    changeOrigin: true,
+    pathRewrite: {
+        '^/laravel': '',
+    },
+}));
 
 app.listen(port, () => {
     console.log(`API Gateway running on port ${port}`);
