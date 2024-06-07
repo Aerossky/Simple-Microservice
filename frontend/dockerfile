@@ -1,16 +1,11 @@
-# Use an official Node.js runtime as the base image
-FROM node:16
+# Use the official nginx image as the base image
+FROM nginx:alpine
 
-# Set the working directory
-WORKDIR /app
+# Copy the static files to the nginx html directory
+COPY . /usr/share/nginx/html
 
-COPY . .
+# Expose port 80 to the outside world
+EXPOSE 80
 
-# Install http-server globally
-RUN npm install -g http-server
-
-# Expose port 8080
-EXPOSE 8080
-
-# Command to run the http server
-CMD http-server . -p 8080
+# Run nginx
+CMD ["nginx", "-g", "daemon off;"]
