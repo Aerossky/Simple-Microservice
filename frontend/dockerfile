@@ -1,0 +1,16 @@
+# Use an official Node.js runtime as the base image
+FROM node:16
+
+# Set the working directory
+WORKDIR /app
+
+COPY . .
+
+# Install http-server globally
+RUN npm install -g http-server
+
+# Expose port 8080
+EXPOSE 8080
+
+# Command to run the http server
+CMD http-server . -p 8080

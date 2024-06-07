@@ -7,6 +7,7 @@ const { createProxyMiddleware } = require('http-proxy-middleware');
 // Import routes
 const resepRoutes = require('./routes/resepRoutes');
 const permintaanRoutes = require('./routes/permintaanRoutes');
+const komentarRoutes = require('./routes/komentarRoutes');
 
 // Middleware untuk parsing JSON
 app.use(express.json());
@@ -21,6 +22,7 @@ app.get('/', (req, res) => {
 // Gunakan routes
 app.use('/reseps', resepRoutes);
 app.use('/permintaans', permintaanRoutes);
+app.use('/komentars', komentarRoutes);
 
 // Proxy requests to /laravel to the Laravel API
 app.use('/laravel', createProxyMiddleware({
