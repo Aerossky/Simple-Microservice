@@ -12,9 +12,9 @@ services:
       - MYSQL_PASSWORD=password
     restart: always
     networks:
-      - laravel
+      - user-network
 
-  phpmyadminuser:
+  phpmyadmin_user:
     image: phpmyadmin/phpmyadmin
     depends_on:
       - db_user
@@ -27,17 +27,16 @@ services:
       MYSQL_ROOT_PASSWORD: password
     restart: always
     networks:
-      - laravel
+      - user-network
 
   service-user:
     image: 'shinsenter/laravel:latest'
-    container_name: service-user
     depends_on:
       - db_user
     links:
       - db_user
     ports:
-      - "7000:80"
+      - "7001:80"
     volumes:
       - './service-user/:/var/www/html'
     environment:
@@ -49,12 +48,11 @@ services:
       - DB_PASSWORD=password
     restart: always
     networks:
-      - laravel
+      - user-network
 
   service-resep:
     build:
       context: ./service-resep
-    container_name: service-resep
     ports:
       - "3000:3000"
     environment:
@@ -63,11 +61,12 @@ services:
     depends_on:
       - db_resep
     restart: always
+    networks:
+      - service-network
 
   service-permintaan-resep:
     build:
       context: ./service-permintaan-resep
-    container_name: service-permintaan-resep
     ports:
       - "3001:3001"
     environment:
@@ -76,11 +75,12 @@ services:
     depends_on:
       - db_resep
     restart: always
+    networks:
+      - service-network
 
   service-komentar:
     build:
       context: ./service-komentar
-    container_name: service-komentar
     ports:
       - "3002:3002"
     environment:
@@ -89,31 +89,59 @@ services:
     depends_on:
       - db_resep
     restart: always
+    networks:
+      - service-network
 
   db_resep:
     image: mysql:8.0
-    container_name: mysql
     environment:
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
       MYSQL_DATABASE: db_resep
     ports:
-      - "3306:3306"
+      - "3307:3306"
     volumes:
       - mysql-data:/var/lib/mysql
     restart: always
+    networks:
+      - service-network
 
-  phpmyadmin:
+  phpmyadmin_resep:
     image: phpmyadmin/phpmyadmin
-    container_name: phpmyadmin
     environment:
       PMA_HOST: db_resep
       PMA_USER: root
       PMA_PASSWORD: ""
       UPLOAD_LIMIT: 64M
     ports:
-      - "8080:80"
+      - "8070:80"
     depends_on:
       - db_resep
+    restart: always
+    networks:
+      - service-network
+
+  api-gateway:
+    build: ./APi-gateway
+    ports:
+      - "4000:4000"
+    depends_on:
+      - service-user
+      - service-resep
+      - service-permintaan-resep
+      - service-komentar
+    networks:
+      - user-network
+      - service-network
+    restart: always
+
+  frontend:
+    build:
+      context: ./frontend
+    ports:
+      - "8080:80"
+    networks:
+      - service-network
+      - user-network
     restart: always
 
 volumes:
@@ -121,5 +149,7 @@ volumes:
   dbuser_data:
 
 networks:
-  laravel:
+  user-network:
+    driver: bridge
+  service-network:
     driver: bridge
