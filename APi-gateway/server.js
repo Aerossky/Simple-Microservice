@@ -26,7 +26,7 @@ app.use('/komentars', komentarRoutes);
 
 // Proxy requests to /laravel to the Laravel API
 app.use('/laravel', createProxyMiddleware({
-    target: 'http://localhost:7001',
+    target: 'http://service-user:7001',
     changeOrigin: true,
     pathRewrite: {
         '^/laravel': '',

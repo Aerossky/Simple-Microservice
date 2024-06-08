@@ -4,7 +4,7 @@ const axios = require('axios');
 const router = express.Router();
 
 // Endpoint ke service-komentar
-const KOMENTAR_SERVICE_URL = 'http://localhost:3002';
+const KOMENTAR_SERVICE_URL = 'http://service-komentar:3002';
 
 router.get('/', async (req, res) => {
     try {
