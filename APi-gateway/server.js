@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const port = process.env.PORT || 4000;
-const cors = require('cors'); // Import cors
+const cors = require('cors');
 const { createProxyMiddleware } = require('http-proxy-middleware');
 
 // Import routes
@@ -26,7 +26,7 @@ app.use('/komentars', komentarRoutes);
 
 // Proxy requests to /laravel to the Laravel API
 app.use('/laravel', createProxyMiddleware({
-    target: 'http://localhost:7001',
+    target: 'http://service-user:80',
     changeOrigin: true,
     pathRewrite: {
         '^/laravel': '',

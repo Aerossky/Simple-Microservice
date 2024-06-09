@@ -4,7 +4,7 @@ const axios = require('axios');
 const router = express.Router();
 
 // Endpoint ke service-resep
-const RESEP_SERVICE_URL = 'http://localhost:3000';
+const RESEP_SERVICE_URL = 'http://service-resep:3000';
 
 router.get('/', async (req, res) => {
   try {
